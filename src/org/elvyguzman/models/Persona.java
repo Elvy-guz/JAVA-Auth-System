@@ -8,7 +8,7 @@ public abstract class Persona {
     
     //Constructores
     //estoy aplicando el polimorfismo por sobrecarga y que varien sus atributos
-    public void Persona (){}    //no reciba ningun atritubo
+    public Persona (){}    //no reciba ningun atritubo
     
     //que reciba todos los atributos
     public Persona(String nombres, String apellidos, Integer edad){
