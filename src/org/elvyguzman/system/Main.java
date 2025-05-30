@@ -22,7 +22,8 @@ public class Main {
         
         System.out.println(profesor);
         System.out.println(profesor2);
-               
+        
+        System.out.println("Esta es una prueba en la rama ft/test");
         
     }
     

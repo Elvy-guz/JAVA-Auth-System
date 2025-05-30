@@ -7,7 +7,7 @@ public class Profesor extends Persona{
     private String phone;
     
     //constrsuctor vacio
-    public void Profesor(){}
+    public Profesor(){}
     
     //constrsuctor lleno (sobrecarga de contrsuctor, polimorfismo)
     public Profesor(String nombres, String apellidos, Integer edad, 
