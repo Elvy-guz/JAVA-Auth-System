@@ -5,7 +5,7 @@ public class Profesor extends Persona{
     private String email;
     private String id;
     private String phone;
-    
+   
     //constrsuctor vacio
     public Profesor(){}
     
@@ -46,7 +46,5 @@ public class Profesor extends Persona{
     public String toString() {
         return  super.toString() + "Profesor{" + "email=" + email + ", id=" + id + ", phone=" + phone + '}';
     }
-    
-    
-    
+      
 }
