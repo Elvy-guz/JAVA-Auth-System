@@ -1,4 +1,4 @@
-package org.elvyguzman.system;
+package org.elvyguzman.models;
 import org.elvyguzman.models.Persona;
 
 public class Alumno extends Persona{
