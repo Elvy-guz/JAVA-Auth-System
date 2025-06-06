@@ -10,6 +10,7 @@ public class ProfesorViews {
     ProfesorController pc = new ProfesorController();
     Profesor pf;
     
+    //Menu para las opciones
     public ProfesorViews(){}
     
     public void menuProfesor(){
