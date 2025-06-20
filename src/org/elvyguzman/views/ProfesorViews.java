@@ -1,12 +1,13 @@
 package org.elvyguzman.views;
-import java.util.Scanner;
+
 import org.elvyguzman.controllers.ProfesorController;
 import org.elvyguzman.models.Profesor;
+import org.elvyguzman.utils.SingletonScanner;
 
 public class ProfesorViews {
     Integer op1, op2;
     boolean flag = true;
-    Scanner leer = new Scanner(System.in);
+    final java.util.Scanner leer = SingletonScanner.getInstance().getScanner();
     ProfesorController pc = new ProfesorController();
     Profesor pf;
     
