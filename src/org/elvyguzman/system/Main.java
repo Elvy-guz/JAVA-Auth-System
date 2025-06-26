@@ -1,10 +1,10 @@
 package org.elvyguzman.system;
-import org.elvyguzman.views.ProfesorViews;
+import org.elvyguzman.views.MenuGeneral;
 
 public class Main {
 
     public static void main(String[] args) {
-        ProfesorViews profesorViews = new ProfesorViews();
-        profesorViews.menuProfesor();      
+        MenuGeneral mg = new MenuGeneral();
+        mg.mostrarMenu();
     }  
 }

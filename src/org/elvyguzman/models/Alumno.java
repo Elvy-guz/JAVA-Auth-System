@@ -1,5 +1,4 @@
 package org.elvyguzman.models;
-import org.elvyguzman.models.Persona;
 
 public class Alumno extends Persona{
     
@@ -26,7 +25,7 @@ public class Alumno extends Persona{
         return carnet;
     }
 
-    public void setCarnet(String carnet) {
+    public void setCarnet(String carnet) {       
         this.carnet = carnet;
     }
 
@@ -48,9 +47,13 @@ public class Alumno extends Persona{
     //Sobrecarga de toString
     @Override
     public String toString() {
-        return super.toString()+ "Alumno{" + "carnet=" + carnet + ", grado=" + grado + 
-                ", seccion=" + seccion + '}';
-    } 
-    
-    
+        return """
+               
+               --- ALUMNO ---
+               Nombre: """ + getNombres() + " " + getApellidos() + "\n" +
+                "Edad: " + getEdad() + "\n" +
+                "Carnet: " + getCarnet() + "\n" +
+                "Grado: " + getGrado() + "\n" +
+                "Seccion: " + getSeccion() + "\n";
+    }   
 }
