@@ -32,6 +32,7 @@ public class MenuGeneral {
                         System.out.println("Hasta pronto, adios!!!");
                         flag = false;
                     }
+                    default -> System.out.println("Selecciona una opcion validad");
                 }
             }catch(Exception e){
                 System.out.println("Error en el sistema " + e.getMessage());

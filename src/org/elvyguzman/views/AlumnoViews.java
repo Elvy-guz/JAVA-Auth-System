@@ -1,83 +1,104 @@
 package org.elvyguzman.views;
 
+import org.elvyguzman.utils.SingletonScanner;
 import org.elvyguzman.controllers.AlumnoController;
 import org.elvyguzman.models.Alumno;
-import org.elvyguzman.utils.SingletonScanner;
+
 
 public class AlumnoViews {
     Integer op1, op2;
-    boolean flag = true;
-    final java.util.Scanner leer = SingletonScanner.getInstance().getScanner();
-    AlumnoController pc = new AlumnoController();
-    Alumno pf;
-    
-    //Menu para las opciones
-    public AlumnoViews(){}
+    Boolean flag = true;
+    String carnet;
+    final java.util.Scanner LEER = SingletonScanner.getInstance().getScanner();
+    AlumnoController ac = new AlumnoController();
+    Alumno alumno;
     
     public void menuAlumno(){
-        while(flag == true){
-            System.out.println("\n Que deseas realizar?");
-            System.out.println("1. Agregar alumno");
-            System.out.println("2. Listar alumno");
-            System.out.println("3. Buscar alumno");
-            System.out.println("4. Actualizar alumno");
-            System.out.println("5. Eliminar alumno");
-            op1 = leer.nextInt();
-            leer.nextLine();
-            
-            switch(op1){
-                case 1 -> {
-                    pc.agregarAlumno();
-                    System.out.println("Deseas continuar");
-                    System.out.println("1. Para si, 2. Para no");
-                    op2 = leer.nextInt();
-                    flag = menuRepetir(op2);
+        flag = true;
+        while(flag){
+            try{
+                System.out.println("\n --- MENU ALUMNO ---");
+                System.out.println("1. Agregar alumno");
+                System.out.println("2. Listar alumno");
+                System.out.println("3. Buscar alumno");
+                System.out.println("4. Actualizar alumno");
+                System.out.println("5. Eliminar alumno");
+                System.out.println("6. Regresar al menu general");
+                int opcion = 0;
+                while(true){
+                    System.out.println("Selecciona una opcion");
+                    if(!LEER.hasNextInt()){
+                        System.out.println("Entrada invalida, se esperaba un numero");
+                        LEER.hasNextLine();
+                    }
+                   opcion = LEER.nextInt();
+                   LEER.nextLine();
+                   break;
                 }
-                case 2 -> {
-                    pc.listarAlumnos();
-                    System.out.println("Deseas continuar");
-                    System.out.println("1. Para si, 2. Para no");
-                    op2 = leer.nextInt();
-                    flag = menuRepetir(op2);
+                op1 = opcion;
+                switch(op1){
+                    case 1 ->{
+                        ac.agregarAlumno();
+                        op2 = pedirContinuar();
+                        flag = menuRepetir(op2);
+                    }
+                    case 2 ->{
+                        ac.listarAlumnos();
+                        op2 = pedirContinuar();
+                        flag = menuRepetir(op2);
+                    }
+                    case 3 ->{
+                        System.out.println("Ingresa el carnet a buscar");
+                        carnet = LEER.nextLine();
+                        alumno = ac.buscarAlumno(carnet);
+                        if(alumno != null) System.out.println(alumno);
+                    }
+                    case 4 ->{
+                        System.out.println("Ingresa el carnet a actualizar");
+                        carnet = LEER.nextLine();
+                        alumno = ac.actualizarAlumno(carnet);
+                        if(alumno != null) System.out.println(alumno);
+                        op2 = pedirContinuar();
+                        flag = menuRepetir(op2);
+                        
+                    }
+                    case 5 ->{
+                        System.out.println("Ingresa el carnet a eliminar");
+                        carnet = LEER.nextLine();
+                        System.out.println(ac.eliminarAlumno(carnet));
+                        op2 = pedirContinuar();
+                        flag = menuRepetir(op2);
+                    }
+                    case 6 ->{
+                        flag = false;
+                    }
+                    default ->{
+                        System.out.println("Opcion no valida");
+                        op2 = pedirContinuar();
+                        flag = menuRepetir(op2);
+                    }
+                        
                 }
-                case 3 -> {
-                    System.out.println("Ingresa el ID del alumno a buscar");
-                    String id = leer.nextLine();
-                    pf = pc.buscarAlumno(id);
-                    System.out.println(pf);
-                    System.out.println("Deseas continuar");
-                    System.out.println("1. Para si, 2. Para no");
-                    op2 = leer.nextInt();
-                    flag = menuRepetir(op2);
-                }
-                case 4 -> {
-                    System.out.println("Ingresa el ID del alumno a actualizar");
-                    String id = leer.nextLine();
-                    pf = pc.actualizarAlumno(id);
-                    System.out.println(pf);
-                    System.out.println("Deseas continuar");
-                    System.out.println("1. Para si, 2. Para no");
-                    op2 = leer.nextInt();
-                    flag = menuRepetir(op2);
-                }
-                case 5 -> {
-                   System.out.println("Ingresa el ID del alumno a eliminar");
-                    String id = leer.nextLine(); 
-                    pc.eliminarAlumno(id);
-                    System.out.println("Deseas continuar");
-                    System.out.println("1. Para si, 2. Para no");
-                    op2 = leer.nextInt();
-                    flag = menuRepetir(op2);
-                }
-                default -> {
-                    System.out.println("Opcion no valida.");
-                    System.out.println("Deseas continuar?");
-                    System.out.println("1. Para si, 2. Para no");
-                    op2 = leer.nextInt();
-                    flag = menuRepetir(op2);
-                }
-            }   
+            }catch(Exception e){
+                System.out.println("Error inesperado " + e.getMessage());
+                LEER.nextLine();
+            }
         }
+    }
+    
+    private int pedirContinuar(){
+        op1 = 0;
+        while(true){
+            System.out.println("¿Deseas continuar? (1. Si, 2. No)");
+            if(!LEER.hasNextInt()){
+                System.out.println("Entrada invalida, se esperaba un numero");
+                LEER.nextLine();
+            }
+            op1 = LEER.nextInt();
+            if(op1 == 1 || op2 == 2) break;
+            else System.out.println("Opcion no valida");
+        }
+        return op1;
     }
     
     public static boolean menuRepetir(int op){
