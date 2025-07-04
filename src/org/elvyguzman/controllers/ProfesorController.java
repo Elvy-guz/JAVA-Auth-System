@@ -16,7 +16,7 @@ public class ProfesorController {
     //UI/UX -> User Interface / User Expirince
     
     final java.util.Scanner leer = SingletonScanner.getInstance().getScanner();
-    ArrayList<Profesor> profesores = new ArrayList<Profesor> ();
+    ArrayList<Profesor> profesores = new ArrayList<> ();
     
     public ProfesorController () {}
     
@@ -56,8 +56,6 @@ public class ProfesorController {
                 System.out.println(e.getMessage());
             }
         }
-        
-        
         
         System.out.println("Ingresa el telefono");
         profesor.setPhone(leer.nextLine());
@@ -157,6 +155,3 @@ public class ProfesorController {
     }
     
 }
-
-
-
